@@ -1,7 +1,6 @@
 # Desafio de Engenharia de Dados
 
-Este desafio faz parte da **Aula 15: Funções com Views** da disciplina de Banco de Dados.  
-O objetivo é exercitar conceitos de **consultas relacionais**, **agregações**, **funções PL/pgSQL** e **integração SQL → JSON**, utilizando o **PostgreSQL**.
+O objetivo é trabalhar conceitos de **consultas relacionais**, **agregações**, **funções PL/pgSQL** e **integração SQL → JSON**, utilizando o **PostgreSQL**.
 
 ---
 
