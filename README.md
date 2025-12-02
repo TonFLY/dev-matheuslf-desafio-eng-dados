@@ -14,7 +14,7 @@ Foi fornecido um banco de dados já estruturado com as tabelas:
 - `pedidos`
 - `pedido_itens`
 
-Sua missão é **importar o banco de dados** disponibilizado em aula e criar as *views* e *funções* solicitadas a seguir.
+Sua missão é **importar o banco de dados** disponibilizado e criar as *views* e *funções* solicitadas a seguir.
 
 ---
 
