@@ -2,9 +2,10 @@ CREATE OR REPLACE VIEW vw_pedidos_detalhados AS
 
 SELECT
    /* Dados do cliente */
-    C.nome              AS cliente_nome
+
+    a.id                AS id_do_pedido
+,   C.nome              AS cliente_nome
 ,   c.cidade            AS cidade_do_cliente
-,   C.data_cadastro     AS data_de_cadastro_do_cliente
 
     /* Dados do produto */
 ,   D.nome              AS nome_do_produto
