@@ -58,7 +58,7 @@ INSERT INTO pedido_itens (pedido_id, produto_id, quantidade, preco_unit) VALUES
 | View   | `vw_total_por_cliente`      | GROUP BY + SUM             | agregação            |          SIM           |
 | View   | `vw_pedidos_resumo`         | COUNT + SUM                | agrupamento          |          SIM           |
 | View   | `vw_vendas_por_cidade`      | GROUP BY + ORDER BY        | análise por região   |          SIM           |
-| View   | `vw_produtos_mais_vendidos` | SUM + ORDER BY DESC        | ranking              |                        |
+| View   | `vw_produtos_mais_vendidos` | SUM + ORDER BY DESC        | ranking              |          SIM           |
 | Função | `fn_calcula_total_pedido`   | SELECT INTO + COALESCE     | função escalar       |          SIM           |
 | Função | `fn_clientes_vip`           | HAVING + parâmetros        | filtro dinâmico      |          SIM           |
 | Função | `fn_produtos_mais_vendidos` | retorno TABLE              | agregação            |                        |

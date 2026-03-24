@@ -2,6 +2,7 @@ CREATE OR REPLACE FUNCTION fn_clientes_vip(
     p_valor_minimo NUMERIC DEFAULT NULL,
     p_qtd_min_pedidos INT DEFAULT NULL
 )
+
 RETURNS TABLE (
     cliente_id INT,
     cliente_nome TEXT,
