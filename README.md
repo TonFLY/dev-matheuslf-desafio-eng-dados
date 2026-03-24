@@ -52,16 +52,16 @@ INSERT INTO pedido_itens (pedido_id, produto_id, quantidade, preco_unit) VALUES
 
 ## O que você deve fazer?
 
-| Tipo   | Nome                        | Demonstra                  | Conceitos            |
-| ------ | --------------------------- | -------------------------- | -------------------- |
-| View   | `vw_pedidos_detalhados`     | JOIN + cálculo de subtotal | relacionamentos      |
-| View   | `vw_total_por_cliente`      | GROUP BY + SUM             | agregação            |
-| View   | `vw_pedidos_resumo`         | COUNT + SUM                | agrupamento          |
-| View   | `vw_vendas_por_cidade`      | GROUP BY + ORDER BY        | análise por região   |
-| View   | `vw_produtos_mais_vendidos` | SUM + ORDER BY DESC        | ranking              |
-| Função | `fn_calcula_total_pedido`   | SELECT INTO + COALESCE     | função escalar       |
-| Função | `fn_clientes_vip`           | HAVING + parâmetros        | filtro dinâmico      |
-| Função | `fn_produtos_mais_vendidos` | retorno TABLE              | agregação            |
-| Função | `fn_vendas_por_cidade`      | retorno TABLE + join       | agrupamento múltiplo |
-| Função | `fn_pedido_json`            | JSON_BUILD_OBJECT          | integração API/SQL   |
+| Tipo   | Nome                        | Demonstra                  | Conceitos            |  RESOLVIDO?            |
+| ------ | --------------------------- | -------------------------- | -------------------- | --------------------   |
+| View   | `vw_pedidos_detalhados`     | JOIN + cálculo de subtotal | relacionamentos      |          SIM           |
+| View   | `vw_total_por_cliente`      | GROUP BY + SUM             | agregação            |          SIM           |
+| View   | `vw_pedidos_resumo`         | COUNT + SUM                | agrupamento          |          SIM           |
+| View   | `vw_vendas_por_cidade`      | GROUP BY + ORDER BY        | análise por região   |                        |
+| View   | `vw_produtos_mais_vendidos` | SUM + ORDER BY DESC        | ranking              |                        |
+| Função | `fn_calcula_total_pedido`   | SELECT INTO + COALESCE     | função escalar       |          SIM           |
+| Função | `fn_clientes_vip`           | HAVING + parâmetros        | filtro dinâmico      |          SIM           |
+| Função | `fn_produtos_mais_vendidos` | retorno TABLE              | agregação            |                        |
+| Função | `fn_vendas_por_cidade`      | retorno TABLE + join       | agrupamento múltiplo |                        |
+| Função | `fn_pedido_json`            | JSON_BUILD_OBJECT          | integração API/SQL   |          SIM           |
 
