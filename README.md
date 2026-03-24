@@ -1,67 +1,58 @@
-# Desafio de Engenharia de Dados
+# Desafio de Engenharia de Dados (PostgreSQL)
 
-O objetivo é trabalhar conceitos de **consultas relacionais**, **agregações**, **funções PL/pgSQL** e **integração SQL → JSON**, utilizando o **PostgreSQL**.
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Tonfly-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tonfly)
 
----
+## Sobre o desafio
 
-## Cenário
+Este repositório contém minha resolução do desafio proposto pelo Dev Matheus, com foco em análise de vendas e clientes usando PostgreSQL.
 
-Você está trabalhando em uma empresa que precisa analisar dados de **vendas e clientes**.  
-Foi fornecido um banco de dados já estruturado com as tabelas:
+Mesmo sendo DBA SQL Server, esse foi meu primeiro contato prático com funções em PostgreSQL. O objetivo foi me desafiar em uma stack diferente, aproveitando a base que já tenho em SQL relacional.
 
-- `clientes`
-- `produtos`
-- `pedidos`
-- `pedido_itens`
+## Escopo técnico
 
-Sua missão é **importar o banco de dados** disponibilizado e criar as *views* e *funções* solicitadas a seguir.
+Base utilizada:
+- clientes
+- produtos
+- pedidos
+- pedido_itens
 
----
+Entregas implementadas:
 
-## Importação e Inserts
+| Tipo   | Nome                      | Objetivo técnico                       |
+|--------|---------------------------|----------------------------------------|
+| View   | vw_pedidos_detalhados     | JOIN e cálculo de subtotal por item    |
+| View   | vw_total_por_cliente      | agregação de faturamento por cliente   |
+| View   | vw_pedidos_resumo         | resumo com contagem e soma             |
+| View   | vw_vendas_por_cidade      | consolidado de vendas por cidade       |
+| View   | vw_produtos_mais_vendidos | ranking de produtos                    |
+| Função | fn_calcula_total_pedido   | cálculo de total por pedido            |
+| Função | fn_clientes_vip           | filtro dinâmico por valor e volume     |
+| Função | fn_produtos_mais_vendidos | agregação de produtos vendidos         |
+| Função | fn_vendas_por_cidade      | análise por prefixo de cidade          |
+| Função | fn_pedido_json            | retorno estruturado em JSON            |
 
-Após importar o banco, execute os comandos abaixo para popular as tabelas iniciais:
+## Abordagem
 
-```sql
-INSERT INTO clientes (nome, cidade) VALUES
-('Ana Souza', 'Curitiba'),
-('Bruno Lima', 'Florianópolis'),
-('Carla Mendes', 'Porto Alegre');
+- Desenvolvimento 100% manual, sem uso de IA na resolução.
+- Pesquisa pontual no Google apenas para detalhar o retorno em JSON no PostgreSQL.
+- Validação de resultados por consultas diretas após criação de views e funções.
 
-INSERT INTO produtos (nome, preco) VALUES
-('Notebook Lenovo', 4200.00),
-('Mouse Logitech', 120.00),
-('Monitor LG 24"', 950.00),
-('Teclado Mecânico Redragon', 380.00);
+## Principais aprendizados
 
-INSERT INTO pedidos (cliente_id, data_pedido, valor_total)
-VALUES
-(1, '2025-11-10', 0), -- pedido da Ana
-(2, '2025-11-11', 0); -- pedido do Bruno
+- Diferenças práticas entre T-SQL e PL/pgSQL na criação de funções.
+- Uso de funções com retorno escalar e tabular no PostgreSQL.
+- Estruturação de payload JSON direto no banco para integração.
+- Reforço de boas práticas com JOIN, GROUP BY, HAVING e COALESCE.
 
--- Pedido 1 (Ana Souza)
-INSERT INTO pedido_itens (pedido_id, produto_id, quantidade, preco_unit) VALUES
-(1, 1, 1, 4200.00), -- Notebook Lenovo
-(1, 2, 1, 120.00);  -- Mouse Logitech
+## Arquivos principais
 
--- Pedido 2 (Bruno Lima)
-INSERT INTO pedido_itens (pedido_id, produto_id, quantidade, preco_unit) VALUES
-(2, 3, 2, 950.00),  -- 2 Monitores LG
-(2, 4, 1, 380.00);  -- Teclado Mecânico
-```
+- Funções: fn_calcula_total_pedido.sql, fn_clientes_vip.sql, fn_produtos_mais_vendidos.sql, fn_vendas_por_cidade.sql, fn_pedido_json.sql
+- Views: vw_pedidos_detalhados.sql, vw_total_por_cliente.sql, vw_pedidos_resumo.sql, vw_vendas_por_cidade.sql, vw_produtos_mais_vendidos.sql
+- Backup da base: vendasx.backup
 
-## O que você deve fazer?
+## Referências
 
-| Tipo   | Nome                        | Demonstra                  | Conceitos            |  RESOLVIDO?            |
-| ------ | --------------------------- | -------------------------- | -------------------- | --------------------   |
-| View   | `vw_pedidos_detalhados`     | JOIN + cálculo de subtotal | relacionamentos      |          SIM           |
-| View   | `vw_total_por_cliente`      | GROUP BY + SUM             | agregação            |          SIM           |
-| View   | `vw_pedidos_resumo`         | COUNT + SUM                | agrupamento          |          SIM           |
-| View   | `vw_vendas_por_cidade`      | GROUP BY + ORDER BY        | análise por região   |          SIM           |
-| View   | `vw_produtos_mais_vendidos` | SUM + ORDER BY DESC        | ranking              |          SIM           |
-| Função | `fn_calcula_total_pedido`   | SELECT INTO + COALESCE     | função escalar       |          SIM           |
-| Função | `fn_clientes_vip`           | HAVING + parâmetros        | filtro dinâmico      |          SIM           |
-| Função | `fn_produtos_mais_vendidos` | retorno TABLE              | agregação            |          SIM           |
-| Função | `fn_vendas_por_cidade`      | retorno TABLE + join       | agrupamento múltiplo |          SIM           |
-| Função | `fn_pedido_json`            | JSON_BUILD_OBJECT          | integração API/SQL   |          SIM           |
+- Repositório original do desafio (Dev Matheus): https://github.com/matheuslf/dev-matheuslf-desafio-eng-dados
+- Vídeo encontrado posteriormente no YouTube: https://www.youtube.com/watch?v=GtW_FK-_2u4
+
 
