@@ -20,10 +20,20 @@ BEGIN
         WHERE C.cidade ILIKE unaccent(p_cidade || '%')    
         GROUP BY C.cidade, a.quantidade
         ORDER BY VALOR_TOTAL_VENDAS DESC;
+
+
+        IF NOT FOUND THEN
+        RETURN QUERY
+        SELECT 
+                 'Cidade não encontrada ou sem vendas'::VARCHAR          AS CIDADE_CLIENTE
+            ,     0::INTEGER                                             AS TOTAL_DE_VENDAS
+            ,     0::NUMERIC                                             AS VALOR_TOTAL_VENDAS
+        ;
+        END IF;
+
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT fn_vendas_por_cidade('cu')
+SELECT fn_vendas_por_cidade('po')
 
 
-SELECT * FROM clientes

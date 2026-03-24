@@ -62,6 +62,6 @@ INSERT INTO pedido_itens (pedido_id, produto_id, quantidade, preco_unit) VALUES
 | Função | `fn_calcula_total_pedido`   | SELECT INTO + COALESCE     | função escalar       |          SIM           |
 | Função | `fn_clientes_vip`           | HAVING + parâmetros        | filtro dinâmico      |          SIM           |
 | Função | `fn_produtos_mais_vendidos` | retorno TABLE              | agregação            |          SIM           |
-| Função | `fn_vendas_por_cidade`      | retorno TABLE + join       | agrupamento múltiplo |                        |
+| Função | `fn_vendas_por_cidade`      | retorno TABLE + join       | agrupamento múltiplo |          SIM           |
 | Função | `fn_pedido_json`            | JSON_BUILD_OBJECT          | integração API/SQL   |          SIM           |
 
